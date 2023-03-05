@@ -42,7 +42,7 @@
 {
   if ((self = [super init]))
     {
-      rootKeys = [[NSArray arrayWithObjects: 
+      rootKeys = [NSArray arrayWithObjects:
 	PCClasses,
         PCHeaders,
         PCOtherSources,
@@ -54,9 +54,10 @@
         PCSupportingFiles,
         PCLibraries,
         PCNonProject,
-        nil] retain];
+        nil];
+      RETAIN(rootKeys);
 
-      rootCategories = [[NSArray arrayWithObjects: 
+      rootCategories = [NSArray arrayWithObjects:
   	@"Classes",
     	@"Headers",
       	@"Other Sources",
@@ -70,10 +71,12 @@
 //      @"Frameworks",
 	@"Libraries",
 	@"Non Project Files",
-	nil] retain];
+	nil];
+      RETAIN(rootCategories);
       
-      rootEntries = [[NSDictionary 
-	dictionaryWithObjects:rootCategories forKeys:rootKeys] retain];
+      rootEntries = [NSDictionary
+	dictionaryWithObjects:rootCategories forKeys:rootKeys];
+      RETAIN(rootEntries);
     }
 
   return self;
@@ -134,7 +137,7 @@
   RELEASE(rootKeys);
   RELEASE(rootEntries);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // ----------------------------------------------------------------------------
@@ -297,7 +300,7 @@
 
 - (BOOL)removeFiles:(NSArray *)files forKey:(NSString *)key notify:(BOOL)yn
 {
-  NSMutableArray *filesToRemove = [[files mutableCopy] autorelease];
+  NSMutableArray *filesToRemove = AUTORELEASE([files mutableCopy]);
   NSString       *mainNibFile = [projectDict objectForKey:PCMainInterfaceFile];
   NSString       *appIcon = [projectDict objectForKey:PCAppIcon];
 
@@ -386,8 +389,8 @@
       success = YES;
     }
     
-  [ff release];
-  [tf release];
+  RELEASE(ff);
+  RELEASE(tf);
 
   return success;
 }
@@ -512,7 +515,7 @@
 	}
     }
   [mf appendResources:resources inDir:@"Resources"];
-  [resources release];
+  RELEASE(resources);
 
   // Localization
   [mf appendLocalizedResources:localizedResources

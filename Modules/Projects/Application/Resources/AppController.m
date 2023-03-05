@@ -38,7 +38,7 @@
 
 - (void) dealloc
 {
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void) awakeFromNib

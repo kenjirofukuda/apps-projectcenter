@@ -126,7 +126,7 @@ NSString *PCActiveProjectDidChangeNotification = @"PCActiveProjectDidChange";
   TEST_RELEASE(buildPanel);
   TEST_RELEASE(launchPanel);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)setDelegate:(id)aDelegate 

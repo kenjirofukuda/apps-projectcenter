@@ -50,7 +50,7 @@
   NSLog(@"MethodHandler: dealloc");
   RELEASE(method);
   RELEASE(methods);
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSArray *)methods

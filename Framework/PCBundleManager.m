@@ -58,7 +58,7 @@
   RELEASE(loadedBundles);
   RELEASE(bundlesInfo);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 //

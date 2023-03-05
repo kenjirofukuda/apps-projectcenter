@@ -88,7 +88,7 @@
 #endif
   [[NSNotificationCenter defaultCenter] removeObserver:self];
   
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)orderFront:(id)sender

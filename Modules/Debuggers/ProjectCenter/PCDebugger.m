@@ -415,9 +415,9 @@ NSString *PCDBDebuggerStartedNotification = @"PCDBDebuggerStartedNotification";
 
 - (void) dealloc
 {
-  [debuggerWrapper release];
-  [breakpoints release];
-  [super dealloc];
+  RELEASE(debuggerWrapper);
+  RELEASE(breakpoints);
+  DEALLOC;
 }
 @end
 

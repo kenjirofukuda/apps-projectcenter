@@ -69,7 +69,7 @@
       project = aProject;
       buildStatusTarget = [[NSMutableString alloc] initWithString:@"all"];
       buildTarget = [[NSMutableString alloc] initWithString:@"all"];
-      buildArgs = [[NSMutableArray array] retain];
+      buildArgs = RETAIN([NSMutableArray array]);
       buildOptions = [[PCProjectBuilderOptions alloc] initWithProject:project
 							     delegate:self];
       postProcess = NULL;
@@ -126,7 +126,7 @@
 
 //  NSLog(@"Project Builder--> RC: %i", [self retainCount]);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)awakeFromNib
@@ -141,7 +141,7 @@
 
 //  NSLog(@"ProjectBuilder awakeFromNib");
 
-  [componentView retain];
+  RETAIN(componentView);
   [componentView removeFromSuperview];
 
 //  NSLog(@"ProjectBuilder awakeFromNib: componentView RC:%i", 
@@ -480,8 +480,8 @@
   [buildStatusTarget setString:@"Default"];
 
   // Initiated in [self build:]
-  [currentBuildPath release];
-  [currentBuildFile release];
+  RELEASE(currentBuildPath);
+  RELEASE(currentBuildFile);
 }
 
 // --- Actions
@@ -1248,7 +1248,7 @@
 	initWithString:[file lastPathComponent]
 	    attributes:attributes];
       [errorItem setObject:[attributedString copy] forKey:@"Error"];
-      [attributedString release];
+      RELEASE(attributedString);
 
       [items addObject:errorItem];
     }
@@ -1269,7 +1269,7 @@
       attributedString = [[NSAttributedString alloc] initWithString:incMessage
 							 attributes:attributes];
       [errorItem setObject:[attributedString copy] forKey:@"Error"];
-      [attributedString release];
+      RELEASE(attributedString);
 
       [items addObject:errorItem];
     }

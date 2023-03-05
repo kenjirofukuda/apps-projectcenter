@@ -66,7 +66,7 @@ static PCPrefController *_prefCtrllr = nil;
 #endif
   
   RELEASE(panel);
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)awakeFromNib

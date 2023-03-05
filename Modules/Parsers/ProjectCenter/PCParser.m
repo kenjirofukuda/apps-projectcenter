@@ -56,7 +56,7 @@ typedef enum _CodeType {
   free(_uchar);
   RELEASE(_string);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (id)setString:(NSString *)text

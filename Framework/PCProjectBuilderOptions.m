@@ -77,7 +77,7 @@
 
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)awakeFromNib

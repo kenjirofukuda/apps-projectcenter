@@ -63,7 +63,7 @@
 
   RELEASE(savingView);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // Protocol

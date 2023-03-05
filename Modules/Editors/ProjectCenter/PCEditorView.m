@@ -348,7 +348,7 @@ static int ComputeIndentingOffset(NSString * string, NSUInteger start)
     }
   [self setSelectedRange:NSMakeRange(point, 0)];*/
 
-  [indentString release];
+  RELEASE(indentString);
 }
 
 @end
@@ -453,7 +453,7 @@ static int ComputeIndentingOffset(NSString * string, NSUInteger start)
 {
   TEST_RELEASE(highlighter);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)setEditor:(NSObject <CodeEditor> *)anEditor

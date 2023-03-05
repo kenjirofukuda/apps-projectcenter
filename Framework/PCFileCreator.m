@@ -158,7 +158,7 @@ static NSDictionary  *dict = nil;
   RELEASE(newFilePanel);
   RELEASE(dict);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSDictionary *)creatorDictionary
@@ -298,11 +298,12 @@ static NSDictionary  *dict = nil;
   NSRange  subRange;
 
 #ifdef WIN32 	 
-  file = [[NSMutableString stringWithContentsOfFile: newFile 	 
+  file = [NSMutableString stringWithContentsOfFile: newFile
 					   encoding: NSUTF8StringEncoding 	 
-					      error: NULL] retain]; 	 
+					      error: NULL];
+  RETAIN(file);
 #else
-  file = [[NSMutableString stringWithContentsOfFile:newFile] retain];
+  file = RETAIN([NSMutableString stringWithContentsOfFile:newFile]);
 #endif
 
   while ((subRange = [file rangeOfString:@"$FULLFILENAME$"]).length)
@@ -355,7 +356,7 @@ static NSDictionary  *dict = nil;
   [file writeToFile:newFile atomically:YES];
 #endif
 
-  [file release];
+  RELEASE(file);
 }
 
 @end

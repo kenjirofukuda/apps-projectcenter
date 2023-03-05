@@ -67,7 +67,7 @@
 
   RELEASE(miscView);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // Protocol

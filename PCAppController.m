@@ -66,7 +66,7 @@
 {
   RELEASE(infoController);
   RELEASE(projectManager);
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)awakeFromNib

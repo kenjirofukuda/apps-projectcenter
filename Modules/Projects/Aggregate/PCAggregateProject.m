@@ -46,23 +46,26 @@
                                                         ofType:@"table"];
       infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:_file];
       rootEntries = [infoDict objectForKey:@"BrowserRootEntries"];
-      rootKeys = [[rootEntries allKeys] retain];
-      rootCategories = [[rootEntries allValues] retain];*/
+      rootKeys = RETAIN([rootEntries allKeys]);
+      rootCategories = RETAIN([rootEntries allValues]);*/
 
-      rootKeys = [[NSArray arrayWithObjects:
+      rootKeys = [NSArray arrayWithObjects:
 	PCSubprojects,
 	PCSupportingFiles,
 	PCNonProject,
-	nil] retain];
+	nil];
+      RETAIN(rootKeys);
 
-      rootCategories = [[NSArray arrayWithObjects:
+      rootCategories = [NSArray arrayWithObjects:
 	@"Subprojects",
 	@"Supporting Files",
 	@"Non Project Files",
-	nil] retain];
+	nil];
+      RETAIN(rootCategories);
       
-      rootEntries = [[NSDictionary 
-	dictionaryWithObjects:rootCategories forKeys:rootKeys] retain];
+      rootEntries = [NSDictionary
+	dictionaryWithObjects:rootCategories forKeys:rootKeys];
+      RETAIN(rootEntries);
     }
 
   return self;
@@ -70,13 +73,13 @@
 
 - (void)dealloc
 {
-  [rootCategories release];
-  [rootKeys release];
-  [rootEntries release];
+  RELEASE(rootCategories);
+  RELEASE(rootKeys);
+  RELEASE(rootEntries);
 
-  if (projectAttributesView) [projectAttributesView release];
+  if (projectAttributesView) RELEASE(projectAttributesView);
   
-  [super dealloc];
+  DEALLOC;
 }
 
 //----------------------------------------------------------------------------
@@ -205,7 +208,7 @@
 	  NSLog(@"PCLibraryProject: error loading Inspector NIB!");
 	  return nil;
 	}
-      [projectAttributesView retain];
+      RETAIN(projectAttributesView);
       [self updateInspectorValues:nil];
     }
 

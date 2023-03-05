@@ -115,7 +115,7 @@ NSString *PCEditorDidResignActiveNotification =
   RELEASE(editorName);
   RELEASE(_editorsDict);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (PCProjectManager *)projectManager

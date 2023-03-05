@@ -679,7 +679,7 @@ RangeOfWordInString(NSString * string, NSRange startRange)
       // no syntax definition - no highlighting possible
       if (syntax == nil)
         {
-          [self release];
+          RELEASE(self);
           return nil;
         }
 
@@ -742,7 +742,7 @@ RangeOfWordInString(NSString * string, NSRange startRange)
   TEST_RELEASE(italicFont);
   TEST_RELEASE(boldItalicFont);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void) highlightRange: (NSRange) r

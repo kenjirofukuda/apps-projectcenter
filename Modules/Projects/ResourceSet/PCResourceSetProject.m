@@ -37,20 +37,23 @@
 {
   if ((self = [super init]))
     {
-      rootKeys = [[NSArray arrayWithObjects:
+      rootKeys = [NSArray arrayWithObjects:
 	PCOtherResources,
 	PCSupportingFiles,
 	PCNonProject,
-	nil] retain];
+	nil];
+      RETAIN(rootKeys);
 
-      rootCategories = [[NSArray arrayWithObjects:
+      rootCategories = [NSArray arrayWithObjects:
 	@"Other Resources",
 	@"Supporting Files",
 	@"Non Project Files",
-	nil] retain];
+	nil];
+      RETAIN(rootCategories);
 
-      rootEntries = [[NSDictionary 
-	dictionaryWithObjects:rootCategories forKeys:rootKeys] retain];
+      rootEntries = [NSDictionary
+	dictionaryWithObjects:rootCategories forKeys:rootKeys];
+      RETAIN(rootEntries);
     }
 
   return self;
@@ -58,13 +61,13 @@
 
 - (void)dealloc
 {
-  [rootCategories release];
-  [rootKeys release];
-  [rootEntries release];
+  RELEASE(rootCategories);
+  RELEASE(rootKeys);
+  RELEASE(rootEntries);
 
-  if (projectAttributesView) [projectAttributesView release];
+  if (projectAttributesView) RELEASE(projectAttributesView);
   
-  [super dealloc];
+  DEALLOC;
 }
 
 //----------------------------------------------------------------------------
@@ -162,7 +165,7 @@
 	}
     }
   [mf appendResources:resources inDir:@"Resources"];
-  [resources release];
+  RELEASE(resources);
 
   // Localization
   [mf appendLocalizedResources:localizedResources
@@ -217,7 +220,7 @@
 	  NSLog(@"PCLibraryProject: error loading Inspector NIB!");
 	  return nil;
 	}
-      [projectAttributesView retain];
+      RETAIN(projectAttributesView);
       [self updateInspectorValues:nil];
     }
 

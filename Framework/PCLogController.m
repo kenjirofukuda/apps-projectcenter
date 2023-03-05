@@ -117,7 +117,7 @@ static PCLogController *_logCtrllr = nil;
   font = [NSFont userFixedPitchFontOfSize:[NSFont systemFontSize]];
   textAttributes =
     [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-  [textAttributes retain];
+  RETAIN(textAttributes);
 
   return self;
 }
@@ -129,7 +129,7 @@ static PCLogController *_logCtrllr = nil;
 #endif
   RELEASE(textAttributes);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)showPanel

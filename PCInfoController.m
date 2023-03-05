@@ -59,7 +59,7 @@
       RELEASE(infoWindow);
     }
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)showInfoWindow:(id)sender

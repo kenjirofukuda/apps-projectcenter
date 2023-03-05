@@ -16,7 +16,7 @@ main(int argc, const char *argv[])
   // Your code here...
 
   // The end...
-  [pool release];
+  RELEASE(pool);
 
   return 0;
 }

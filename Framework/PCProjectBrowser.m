@@ -84,7 +84,7 @@ NSString *PCBrowserDidSetPathNotification = @"PCBrowserDidSetPathNotification";
 
   RELEASE(browser);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // ============================================================================

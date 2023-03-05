@@ -111,7 +111,7 @@ NSDictionary * ParseSyntaxGraphics(NSDictionary * specification)
                forKey: @"Italic"];
     }
 
-  return [[dict copy] autorelease];
+  return AUTORELEASE([dict copy]);
 }
 
 void
@@ -272,7 +272,7 @@ static NSMutableDictionary * syntaxDefinitions = nil;
               NSLog(@"Syntax compilation error: context %" PRIuPTR "  missing "
                       @"beginning or ending symbol.", i);
 
-              [self release];
+              RELEASE(self);
               return nil;
             }
 
@@ -449,7 +449,7 @@ static NSMutableDictionary * syntaxDefinitions = nil;
   TEST_RELEASE(contextGraphics);
   TEST_RELEASE(keywordGraphics);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 /**

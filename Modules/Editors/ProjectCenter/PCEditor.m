@@ -298,7 +298,7 @@
 
   RELEASE(_lastSaveDate);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // --- Protocol
@@ -356,7 +356,7 @@
 
   text  = [NSString stringWithContentsOfFile:_path];
   attributedString = [attributedString initWithString:text attributes:attributes];
-  [attributes release];
+  RELEASE(attributes);
 
   _storage = [[NSTextStorage alloc] init];
   [_storage setAttributedString:attributedString];
@@ -489,7 +489,7 @@
 
 - (void)setPath:(NSString *)path
 {
-  NSMutableDictionary *notifDict = [[NSMutableDictionary dictionary] retain];
+  NSMutableDictionary *notifDict = RETAIN([NSMutableDictionary dictionary]);
 
   // Prepare notification object
   [notifDict setObject:self forKey:@"Editor"];
@@ -497,7 +497,7 @@
   [notifDict setObject:path forKey:@"NewFile"];
 
   // Set path
-  [_path autorelease];
+  AUTORELEASE(_path);
   _path = [path copy];
 
   // Post notification
@@ -505,7 +505,7 @@
     postNotificationName:PCEditorDidChangeFileNameNotification
                   object:notifDict];
 
-  [notifDict autorelease];
+  AUTORELEASE(notifDict);
 }
 
 - (NSString *)categoryPath
@@ -515,7 +515,7 @@
 
 - (void)setCategoryPath:(NSString *)path
 {
-  [_categoryPath autorelease];
+  AUTORELEASE(_categoryPath);
   _categoryPath = [path copy];
 }
 
@@ -1218,7 +1218,7 @@ willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange
   inPipe = [NSPipe pipe];
   outPipe = [NSPipe pipe];
 
-  task = [[NSTask new] autorelease];
+  task = AUTORELEASE([NSTask new]);
 
   [task setLaunchPath: @"/bin/sh"];
   [task setArguments: [NSArray arrayWithObjects: @"-c", command, nil]];

@@ -52,7 +52,7 @@
   RELEASE(keyword);
   RELEASE(class);
   RELEASE(classes);
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSArray *)classes

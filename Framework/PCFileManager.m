@@ -77,7 +77,7 @@ static PCFileManager *_mgr = nil;
       RELEASE(addFilesPanel);
     }
   
-  [super dealloc];
+  DEALLOC;
 }
 
 // ===========================================================================
@@ -526,7 +526,7 @@ static PCFileManager *_mgr = nil;
   if (result == NSOKButton)
     {
       [self _saveLastDirectoryForPanel:panel];
-      return [fileList autorelease];
+      return AUTORELEASE(fileList);
     }
 
   return nil;
@@ -704,7 +704,7 @@ static PCFileManager *_mgr = nil;
 	}
     }
 
-  return [filesList autorelease];
+  return AUTORELEASE(filesList);
 }
 
 @end

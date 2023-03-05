@@ -265,7 +265,7 @@
   [v_split setDelegate:nil];
   [projectWindow close];
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // ============================================================================

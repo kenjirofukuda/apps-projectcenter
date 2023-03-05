@@ -130,7 +130,7 @@
   RELEASE(filesScroll);
   RELEASE(editedFiles);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSView *)componentView

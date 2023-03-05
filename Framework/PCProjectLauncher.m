@@ -165,7 +165,7 @@ enum {
 
       textAttributes = 
 	[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-      [textAttributes retain];
+      RETAIN(textAttributes);
     }
 
   return self;
@@ -180,7 +180,7 @@ enum {
   RELEASE (textAttributes);
   RELEASE (debugger);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSView *)componentView;
@@ -390,7 +390,7 @@ enum {
   // Setting I/O
   logPipe = [NSPipe pipe];
   RELEASE(readHandle);
-  readHandle = [[logPipe fileHandleForReading] retain];
+  readHandle = RETAIN([logPipe fileHandleForReading]);
   [stdOut setString:@""];
   [readHandle waitForDataInBackgroundAndNotify];
 
@@ -401,7 +401,7 @@ enum {
 
   errorPipe = [NSPipe pipe];
   RELEASE(errorReadHandle);
-  errorReadHandle = [[errorPipe fileHandleForReading] retain];
+  errorReadHandle = RETAIN([errorPipe fileHandleForReading]);
   [stdOut setString:@""];
   [errorReadHandle waitForDataInBackgroundAndNotify];
 
@@ -534,8 +534,8 @@ enum {
   [[stdOut textStorage] appendAttributedString: as];
   [stdOut scrollRangeToVisible:NSMakeRange([[stdOut string] length], 0)];
 
-  [s release];
-  [as release];
+  RELEASE(s);
+  RELEASE(as);
 }
 
 @end

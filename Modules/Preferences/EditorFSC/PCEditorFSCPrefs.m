@@ -86,7 +86,7 @@
 
   RELEASE(editorFSCView);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)awakeFromNib

@@ -121,7 +121,7 @@
 
 //  RELEASE(_editorsDict);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (NSView *)componentView

@@ -112,7 +112,7 @@ NSString
 	  
 	  if (udict != nil)
 	    [dict addEntriesFromDictionary: udict]; 
-	  [udict release];
+	  RELEASE(udict);
 	  [self assignProjectDict:dict atPath: aPath];
 	}
     }
@@ -163,7 +163,7 @@ NSString
       RELEASE(superProject);
     }
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)loadPreferences:(NSNotification *)aNotification
@@ -189,7 +189,7 @@ NSString
 
   if (projectDict)
     {
-      [projectDict release];
+      RELEASE(projectDict);
     }
   projectDict = [[NSMutableDictionary alloc] initWithDictionary:pDict];
 
@@ -327,7 +327,7 @@ NSString
 {
   if (projectName)
     {
-      [projectName autorelease];
+      AUTORELEASE(projectName);
     }
   projectName = [aName copy];
 //  [projectWindow setFileIconTitle:projectName];
@@ -342,7 +342,7 @@ NSString
 {
   if (projectPath)
     {
-      [projectPath autorelease];
+      AUTORELEASE(projectPath);
     }
   projectPath = [aPath copy];
 }
@@ -411,7 +411,7 @@ NSString
     {
       [projectFileDict setObject:windows forKey:PCWindows];
       [projectFileDict writeToFile:projectFile atomically:YES];
-      [projectFileDict release];
+      RELEASE(projectFileDict);
       return YES;
     }
 
@@ -469,7 +469,7 @@ NSString
 		      updateFilenames: YES];
   
   // release
-  [projectFileDict release];
+  RELEASE(projectFileDict);
 
   return YES;
 }
@@ -508,7 +508,7 @@ NSString
       NSRunAlertPanel(@"Save Project",
 		      @"Couldn't remove the old project backup file",
 		      @"OK",nil,nil);
-      [dict release];
+      RELEASE(dict);
       return NO;
     }
 
@@ -861,7 +861,7 @@ NSString
 		      forKey:PCPublicHeaders 
 		      notify:YES];
 
-  [publicHeaders release];
+  RELEASE(publicHeaders);
 }
 
 //--- Localization
@@ -940,7 +940,7 @@ NSString
 			  notify:YES];
     }
 
-  [localizedResources release];
+  RELEASE(localizedResources);
 }
 //---
 
@@ -1195,7 +1195,7 @@ NSString
 {
   NSEnumerator   *fileEnum = [files objectEnumerator];
   NSString       *file = nil;
-  NSMutableArray *fileList = [[files mutableCopy] autorelease];
+  NSMutableArray *fileList = AUTORELEASE([files mutableCopy]);
   NSString       *complementaryType = nil;
   NSString       *complementaryKey = nil;
   NSString       *complementaryDir = nil;
@@ -1317,7 +1317,7 @@ NSString
 	  [self setResourceFile:file localizable:NO];
 	}
     }
-  [localizedFiles release];
+  RELEASE(localizedFiles);
 
   // Remove files from project
 //  projectFiles = [NSMutableArray arrayWithArray:[projectDict objectForKey:key]];
@@ -1343,7 +1343,7 @@ NSString
 
   [self setProjectDictObject:projectFiles forKey:key notify:yn];
 
-  [projectFiles release];
+  RELEASE(projectFiles);
 
   return YES;
 }

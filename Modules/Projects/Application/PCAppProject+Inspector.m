@@ -124,7 +124,7 @@ cleanup(NSMutableDictionary *m, NSString *k)
 	  NSLog(@"PCAppProject: error loading Inspector NIB!");
 	  return nil;
 	}
-      [projectAttributesView retain];
+      RETAIN(projectAttributesView);
     }
 
   return projectAttributesView;
@@ -456,7 +456,7 @@ cleanup(NSMutableDictionary *m, NSString *k)
   [docTypesItems replaceObjectAtIndex: [docTypesList selectedRow] 
                           withObject: object];
   [docTypesList reloadData];
-  [object release];
+  RELEASE(object);
 }
 
 // ----------------------------------------------------------------------------

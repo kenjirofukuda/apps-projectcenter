@@ -64,7 +64,7 @@
   RELEASE(delegate);
   RELEASE(filePath);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)setFileNameField:(NSTextField *)field

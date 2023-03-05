@@ -94,7 +94,7 @@
   RELEASE(inspectorPanel);
   RELEASE(fileName);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 // ============================================================================
@@ -407,7 +407,7 @@
   [self setSearchOrderButtonsState];
 
   // Retain view
-  [buildAttributesView retain];
+  RETAIN(buildAttributesView);
 }
 
 // --- Search Order
@@ -559,7 +559,7 @@
     [projectDict objectForKey:PCUserLanguages]];
   
   // Retain view
-  [projectAttributesView retain];
+  RETAIN(projectAttributesView);
 }
 
 - (void)setCurrentLanguage:(id)sender
@@ -630,7 +630,7 @@
   [licDescriptionField setNextText:urlField];
   [urlField setNextText:descriptionField];
 
-  [projectDescriptionView retain];
+  RETAIN(projectDescriptionView);
 }
 
 // --- Actions
@@ -726,7 +726,7 @@
       return;
     }
 
-  [projectLanguagesView retain];
+  RETAIN(projectLanguagesView);
   [languagesList setDataSource:self];
 }
 
@@ -834,7 +834,7 @@
       return;
     }
 
-  [fileAttributesView retain];
+  RETAIN(fileAttributesView);
   [localizableButton setRefusesFirstResponder:YES];
   [publicHeaderButton setRefusesFirstResponder:YES];
 
@@ -959,7 +959,7 @@
 {
   if (fileName != nil)
     {
-      [fileName release];
+      RELEASE(fileName);
     }
   fileName = [aString copy];
 }

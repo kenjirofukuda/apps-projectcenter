@@ -85,8 +85,8 @@ static id sharedFindObject = nil;
 
 - (void)dealloc {
     if (self != sharedFindObject) {
-        [findString release];
-        [super dealloc];
+        RELEASE(findString);
+        DEALLOC;
     }
 }
 
@@ -96,7 +96,7 @@ static id sharedFindObject = nil;
 
 - (void)setFindString:(NSString *)string {
     if ([string isEqualToString:findString]) return;
-    [findString autorelease];
+    AUTORELEASE(findString);
     findString = [string copyWithZone:[self zone]];
     if (findTextField) {
         [findTextField setStringValue:string];

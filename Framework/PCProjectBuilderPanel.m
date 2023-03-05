@@ -83,7 +83,7 @@
   
   RELEASE(emptyBox);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (void)orderFront:(id)sender

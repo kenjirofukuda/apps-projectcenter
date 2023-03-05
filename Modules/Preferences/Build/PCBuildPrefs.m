@@ -67,7 +67,7 @@
 
   RELEASE(buildingView);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 

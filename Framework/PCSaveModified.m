@@ -106,7 +106,7 @@ BOOL PCRunSaveModifiedFilesPanel(PCEditorManager *manager,
 #endif
   RELEASE(panel);
 
-  [super dealloc];
+  DEALLOC;
 }
 
 - (BOOL)saveSelectedFiles
