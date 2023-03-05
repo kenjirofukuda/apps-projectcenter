@@ -51,7 +51,7 @@
 //  [NSBundle loadGSMarkupNamed: @"Main" owner: self];
 }
 
-- (BOOL) applicationShouldTerminate: (id)sender
+- (NSApplicationTerminateReply) applicationShouldTerminate: (id)sender
 {
   return YES;
 }
