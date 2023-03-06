@@ -12,7 +12,8 @@ int
 main(int argc, const char *argv[])
 {
 // Uncomment if your application is Renaissance application
-/*  CREATE_AUTORELEASE_POOL (pool);
+/*
+  ENTER_POOL;
   [NSApplication sharedApplication];
   [NSApp setDelegate: [AppController new]];
 
@@ -22,7 +23,7 @@ main(int argc, const char *argv[])
     [NSBundle loadGSMarkupNamed: @"MainMenu-OSX"  owner: [NSApp delegate]];
   #endif
    
-  RELEASE (pool);
+  LEAVE_POOL;
 */
 
   return NSApplicationMain (argc, argv);

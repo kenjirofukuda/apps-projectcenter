@@ -11,13 +11,11 @@
 int
 main(int argc, const char *argv[])
 {
-  id pool = [[NSAutoreleasePool alloc] init];
-
+  ENTER_POOL;
   // Your code here...
 
   // The end...
-  RELEASE(pool);
-
+  LEAVE_POOL;
   return 0;
 }
 
